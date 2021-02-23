@@ -14,7 +14,7 @@ function App() {
   return (
     <AuthProvider>
       <Router>
-        <Route path="/" component={Nav} />
+        <Route path="/" component={Notes} />
         <PrivateRoute exact path="/notes" component={Notes} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/signup" component={SignUp} />
