@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { projectAuth } from "../firebase/config";
+import { withRouter } from "react-router";
 
-export default function SignUp() {
+const SignUp = ({ history }) => {
   const [state, setState] = useState({
     email: "",
     password: "",
@@ -19,6 +20,7 @@ export default function SignUp() {
         // Signed in
         var user = userCredential.user;
         console.log(user);
+        history.push("/notes");
         // ...
       })
       .catch((error) => {
@@ -88,4 +90,5 @@ export default function SignUp() {
       </fieldset>
     </form>
   );
-}
+};
+export default withRouter(SignUp);

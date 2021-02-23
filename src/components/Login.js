@@ -1,7 +1,10 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { Redirect, withRouter } from "react-router";
+import { Link } from "react-router-dom";
 import { projectAuth } from "../firebase/config";
+import { AuthContext } from "./AuthProvider";
 
-export default function Login() {
+const Login = ({ history }) => {
   const [state, setState] = useState({
     email: "",
     password: "",
@@ -17,6 +20,7 @@ export default function Login() {
         // Signed in
         var user = userCredential.user;
         console.log(user);
+        history.push("/notes");
         // ...
       })
       .catch((error) => {
@@ -32,8 +36,13 @@ export default function Login() {
     setState({ ...state, [e.target.name]: e.target.value });
   };
 
+  const { currentUser } = useContext(AuthContext);
+  if (currentUser) {
+    return <Redirect to="/notes" />;
+  }
+
   return (
-    <form onSubmit={handleSubmit}>
+    <form>
       <fieldset>
         <legend>
           <h1> ACADA LOGIN</h1>
@@ -62,10 +71,14 @@ export default function Login() {
             required
           />
         </div>
-        <div className="form-group">
-          <button type="submit">Login</button>
+        <div className="form-group" style={{ display: "flex" }}>
+          <button type="button" onClick={handleSubmit}>
+            Login
+          </button>
+          Need an acount? <Link to="/signup">Sign up</Link>
         </div>
       </fieldset>
     </form>
   );
-}
+};
+export default withRouter(Login);

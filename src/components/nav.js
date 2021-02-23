@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { projectAuth } from "../firebase/config";
 
 export class Nav extends Component {
   render() {
@@ -38,14 +39,22 @@ export class Nav extends Component {
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="notes.html">
+              <a className="nav-link" href="notes">
                 Academic notes
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="notes.html">
+              <a className="nav-link" href="notes">
                 Past Papers
               </a>
+            </li>
+            <li className="nav-item">
+              <button
+                className="btn btn-outline-danger"
+                onClick={(e) => projectAuth.signOut()}
+              >
+                Signout
+              </button>
             </li>
           </ul>
         </div>
