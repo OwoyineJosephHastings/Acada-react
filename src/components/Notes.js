@@ -73,7 +73,7 @@ const Notes = () => {
           })}
         </div>
       )}
-      <hr />(
+      <hr />
       <form className="form">
         <fieldset className="fieldset">
           <legend>Choose Specific Notes</legend>
@@ -232,7 +232,6 @@ const Notes = () => {
           </div>
         </fieldset>
       </form>
-      )
     </div>
   );
 };

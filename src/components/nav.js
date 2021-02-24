@@ -9,7 +9,7 @@ export class Nav extends Component {
           <div className="container-fluid ">
             <a className="navbar-brand" href="index.html">
               <img
-                src="logo"
+                src="https://github.com/OwoyineJosephHastings/Acada/blob/main/resorces/images/logo.png?raw=true"
                 alt=""
                 width="30"
                 height="24"
