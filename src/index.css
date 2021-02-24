@@ -69,11 +69,7 @@ fieldset:hover{
 
 @media screen and (max-width: 600px) {
     body {
-      background-color: olive;
+      background-image: url(https://github.com/OwoyineJosephHastings/Acada/blob/main/resorces/images/logo.png?raw=true);
     }
   }
-  @media (max-width: 400px) {
-    #resource{
-      background-color: blue;
-    }
-  }
+ 
