@@ -8,38 +8,31 @@ const SignUp = ({ history }) => {
     password: "",
     passwordRetype: "",
   });
+  const [error, setError] = useState(null);
 
   const { email, password, passwordRetype } = state;
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    verifyPassword();
-    projectAuth
-      .createUserWithEmailAndPassword(email, password)
-      .then((userCredential) => {
-        // Signed in
-        var user = userCredential.user;
-        console.log(user);
-        history.push("/notes");
-        // ...
-      })
-      .catch((error) => {
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        console.log(errorCode, errorMessage);
-      });
+
+    if (password === passwordRetype) {
+      projectAuth
+        .createUserWithEmailAndPassword(email, password)
+        .then((userCredential) => {
+          setError(null);
+          history.push("/");
+        })
+        .catch((error) => {
+          var errorMessage = error.message;
+          setError(errorMessage);
+        });
+    } else setError("Passwords do not match");
 
     // ...
   };
 
   const handleChange = (e) => {
     setState({ ...state, [e.target.name]: e.target.value });
-  };
-  const verifyPassword = (e) => {
-    if (password !== passwordRetype) {
-      setState({ email: "", password: "", passwordRetype: "" });
-      e.preventDefault();
-    }
   };
 
   return (
@@ -48,6 +41,23 @@ const SignUp = ({ history }) => {
         <legend>
           <h3> CREATE NEW ACOUNT</h3>
         </legend>
+        {error && (
+          <div
+            class="alert alert-danger alert-dismissible fade show"
+            role="alert"
+          >
+            <strong>Oh Sorry! </strong> {error}
+            <button
+              type="button"
+              class="close"
+              data-dismiss="alert"
+              aria-label="Close"
+              onClick={(e) => setError(null)}
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+        )}
         <div className="form-group">
           <label htmlFor="email">Email</label>
           <input

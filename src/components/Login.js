@@ -10,6 +10,11 @@ const Login = ({ history }) => {
     password: "",
   });
 
+  const { currentUser } = useContext(AuthContext);
+  if (currentUser) {
+    return <Redirect to="/" />;
+  }
+
   const { email, password } = state;
 
   const handleSubmit = (e) => {
@@ -20,7 +25,7 @@ const Login = ({ history }) => {
         // Signed in
         var user = userCredential.user;
         console.log(user);
-        history.push("/notes");
+        history.push("/");
         // ...
       })
       .catch((error) => {
@@ -35,11 +40,6 @@ const Login = ({ history }) => {
   const handleChange = (e) => {
     setState({ ...state, [e.target.name]: e.target.value });
   };
-
-  const { currentUser } = useContext(AuthContext);
-  if (currentUser) {
-    return <Redirect to="/notes" />;
-  }
 
   return (
     <form>
