@@ -67,7 +67,7 @@ const Notes = () => {
       </div>
       {resourceDocuments.length !== 0 && (
         <div
-          className="container-fluid  sm-100"
+          className="container-fluid  "
           style={{ display: "flex", flexWrap: "wrap", padding: "1px" }}
         >
           {resourceDocuments.map(function (res, index) {

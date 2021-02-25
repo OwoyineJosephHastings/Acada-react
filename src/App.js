@@ -7,6 +7,7 @@ import Login from "./components/Login";
 import Notes from "./components/Notes";
 import SignUp from "./components/signup";
 import Upload from "./components/Upload";
+import Home from "./components/Home";
 
 import { AuthProvider } from "./components/AuthProvider";
 import PrivateRoute from "./components/PrivateRoute";
@@ -16,6 +17,7 @@ function App() {
     <AuthProvider>
       <Router>
         <Route path="/" component={Nav} />
+        <Route exact path="/" component={Home}></Route>
         <PrivateRoute exact path="/notes" component={Notes} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/signup" component={SignUp} />

@@ -73,4 +73,16 @@ fieldset:hover{
   background-repeat: no-repeat;
   background-position: center;
     }
- 
+ /* medium devices*/
+    @media (min-width: 576px) {  
+ form{
+     max-width: 80%;
+    
+    }}
+     /* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) { 
+ form{
+    
+     max-width: 40%;
+ }
+}

@@ -37,7 +37,7 @@ const SignUp = ({ history }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} style={{ width: "60%" }}>
+    <form onSubmit={handleSubmit}>
       <fieldset>
         <legend>
           <h3> CREATE NEW ACOUNT</h3>

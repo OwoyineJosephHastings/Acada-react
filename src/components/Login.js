@@ -42,43 +42,46 @@ const Login = ({ history }) => {
   };
 
   return (
-    <form>
-      <fieldset>
-        <legend>
-          <h1> ACADA LOGIN</h1>
-        </legend>
-        <div className="form-group">
-          <label htmlFor="email">Email</label>
-          <input
-            type="email"
-            placeholder="Enter your Email"
-            id="email"
-            name="email"
-            value={email}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="password">User password</label>
-          <input
-            name="password"
-            type="password"
-            placeholder="Password"
-            id="password"
-            value={password}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div className="form-group" style={{ display: "flex" }}>
-          <button type="button" onClick={handleSubmit}>
-            Login
-          </button>
-          Need an acount? <Link to="/signup">Sign up</Link>
-        </div>
-      </fieldset>
-    </form>
+    <>
+      <h1> ACADA LOGIN</h1>
+      <form>
+        <fieldset>
+          <legend>DETAILS</legend>
+          <div className="form-group">
+            <label htmlFor="email">Email</label>
+            <input
+              type="email"
+              placeholder="Enter your Email"
+              id="email"
+              name="email"
+              value={email}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="password">User password</label>
+            <input
+              name="password"
+              type="password"
+              placeholder="Password"
+              id="password"
+              value={password}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="form-group" style={{ display: "flex" }}>
+            <button type="button" onClick={handleSubmit}>
+              Login
+            </button>
+            <span className="mx-auto">
+              Need an acount? <Link to="/signup">Sign up</Link>
+            </span>
+          </div>
+        </fieldset>
+      </form>
+    </>
   );
 };
 export default withRouter(Login);

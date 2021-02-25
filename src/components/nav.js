@@ -43,12 +43,12 @@ export class Nav extends Component {
               </Link>
             </li>
             <li className="nav-item">
-              <Link to="/" className="nav-link">
+              <Link to="/notes" className="nav-link">
                 Academic notes
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/">
+              <Link className="nav-link" to="/notes">
                 Past Papers
               </Link>
             </li>
