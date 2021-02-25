@@ -4,8 +4,8 @@ function Resources(props) {
   const [downloads, setDownloads] = useState(props.downloads);
   return (
     <div
-      className="row bg-light w-50 sm-w-100 border border-white "
-      style={{ display: "flex", padding: "1px" }}
+      className="row border border-white w-25"
+      style={{ display: "flex", padding: "2%", margin: "1%" }}
       key={props.uploadedAt}
     >
       <img

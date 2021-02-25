@@ -5,7 +5,10 @@ import { projectAuth } from "../firebase/config";
 export class Nav extends Component {
   render() {
     return (
-      <nav className="navbar navbar-expand-md bg-dark navbar-dark">
+      <nav
+        className="navbar navbar-expand-md bg-dark navbar-dark"
+        style={{ width: "100%", height: "15vh" }}
+      >
         <nav className="navbar navbar-light bg-dark">
           <div className="container-fluid ">
             <Link className="navbar-brand" to="/">
