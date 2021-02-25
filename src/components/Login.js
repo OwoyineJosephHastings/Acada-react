@@ -12,7 +12,7 @@ const Login = ({ history }) => {
 
   const { currentUser } = useContext(AuthContext);
   if (currentUser) {
-    return <Redirect to="/" />;
+    history.push("/notes");
   }
 
   const { email, password } = state;
@@ -25,7 +25,7 @@ const Login = ({ history }) => {
         // Signed in
         var user = userCredential.user;
         console.log(user);
-        history.push("/");
+        history.push("/notes");
         // ...
       })
       .catch((error) => {

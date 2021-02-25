@@ -7,7 +7,7 @@ export class Nav extends Component {
     return (
       <nav
         className="navbar navbar-expand-md bg-dark navbar-dark"
-        style={{ width: "100%", height: "15vh" }}
+        style={{ width: "100%" }}
       >
         <nav className="navbar navbar-light bg-dark">
           <div className="container-fluid ">

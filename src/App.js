@@ -16,10 +16,10 @@ function App() {
     <AuthProvider>
       <Router>
         <Route path="/" component={Nav} />
-        <PrivateRoute exact path="/" component={Notes} />
+        <PrivateRoute exact path="/notes" component={Notes} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/signup" component={SignUp} />
-        <Route exact path="/upload" component={Upload} />
+        <PrivateRoute exact path="/upload" component={Upload} />
       </Router>
     </AuthProvider>
   );

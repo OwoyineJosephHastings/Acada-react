@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { projectAuth } from "../firebase/config";
 import { withRouter } from "react-router";
+import { Link } from "react-router-dom";
 
 const SignUp = ({ history }) => {
   const [state, setState] = useState({
@@ -36,7 +37,7 @@ const SignUp = ({ history }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} style={{ width: "60%" }}>
       <fieldset>
         <legend>
           <h3> CREATE NEW ACOUNT</h3>
@@ -96,6 +97,12 @@ const SignUp = ({ history }) => {
         </div>
         <div className="form-group">
           <button>Sign up</button>
+          <strong className="mx-auto">
+            <span>
+              Already have an account
+              <Link to="/login"> click here to sign in </Link>
+            </span>
+          </strong>
         </div>
       </fieldset>
     </form>
