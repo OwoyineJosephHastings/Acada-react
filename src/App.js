@@ -19,7 +19,7 @@ function App() {
         <PrivateRoute exact path="/" component={Notes} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/signup" component={SignUp} />
-        <PrivateRoute exact path="/upload" component={Upload} />
+        <Route exact path="/upload" component={Upload} />
       </Router>
     </AuthProvider>
   );

@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
+import { projectDatabase } from "../firebase/config";
 function Resources(props) {
+  const [downloads, setDownloads] = useState(props.downloads);
   return (
     <div
       className="row bg-light w-50 sm-w-100 border border-white "
-      id="resource"
       style={{ display: "flex", padding: "1px" }}
+      key={props.uploadedAt}
     >
       <img
         className="col-3"
@@ -17,15 +19,23 @@ function Resources(props) {
         <div>
           <h6>{props.name}</h6>
           <p>Description </p>
-          <span>{props.downloads} downloads</span>
+          <span>{downloads} downloads</span>
         </div>
         <div>
           <a
             href={props.download_link}
+            reference={props.reference}
             role="button"
             className="btn btn-outline-success"
-            onClick={(e) => {
-              console.log(e.target.getAttribute("href"));
+            onClick={(event) => {
+              event.target.setAttribute("disabled", "disabled");
+              projectDatabase
+                .ref(event.target.getAttribute("reference"))
+                .update({ downloads: Number(downloads) + 1 })
+                .then((e) => {
+                  setDownloads(Number(downloads) + 1);
+                  event.target.setAttribute("disabled", false);
+                });
             }}
           >
             Download

@@ -67,9 +67,10 @@ fieldset:hover{
     box-shadow: 0 0 4px 4px rgba(0, 0, 0, 0.25) ;
 }
 
-@media screen and (max-width: 600px) {
-    body {
-        background-image: url(https://images6.alphacoders.com/330/330109.jpg);
-        }
-  }
+
+  body{
+      background-image: url(https://i.pinimg.com/564x/87/c0/4f/87c04f7c07c52d6852d07217fd85071e.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+    }
  

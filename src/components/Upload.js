@@ -99,10 +99,21 @@ export function Upload() {
                       fileName
                   )
                   .set({
-                    uplodedAt: timestamp,
+                    uploadedAt: timestamp,
                     downloads: 0,
                     name: file.name,
                     download_link: downloadURL,
+                    reference:
+                      "university/makerere/cedat/school of engineering/mechanical engineering/" +
+                      year +
+                      "/" +
+                      semester +
+                      "/" +
+                      courseCode +
+                      "/" +
+                      resource +
+                      "/" +
+                      fileName,
                   });
 
                 promise.catch((e) => {
@@ -112,6 +123,8 @@ export function Upload() {
                 promise.then((e) => {
                   // successful upload to the database
                   // reset the state
+                  setProgress(0);
+
                   setState({
                     year: "Year 1",
                     semester: "Semester 1",

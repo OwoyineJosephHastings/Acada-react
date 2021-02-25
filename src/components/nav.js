@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import { projectAuth } from "../firebase/config";
 
 export class Nav extends Component {
@@ -7,7 +8,7 @@ export class Nav extends Component {
       <nav className="navbar navbar-expand-md bg-dark navbar-dark">
         <nav className="navbar navbar-light bg-dark">
           <div className="container-fluid ">
-            <a className="navbar-brand" href="index.html">
+            <Link className="navbar-brand" to="/">
               <img
                 src="https://github.com/OwoyineJosephHastings/Acada/blob/main/resorces/images/logo.png?raw=true"
                 alt=""
@@ -16,7 +17,7 @@ export class Nav extends Component {
                 className="d-inline-block align-top"
               />
               ACADA
-            </a>
+            </Link>
           </div>
         </nav>
 
@@ -34,19 +35,19 @@ export class Nav extends Component {
         <div className="collapse navbar-collapse" id="collapsibleNavbar">
           <ul className="navbar-nav">
             <li className="nav-item">
-              <a className="nav-link" href="/">
+              <Link className="nav-link" to="/">
                 Dashboard
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="notes">
+              <Link to="/" className="nav-link">
                 Academic notes
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="notes">
+              <Link className="nav-link" to="/">
                 Past Papers
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
               <button

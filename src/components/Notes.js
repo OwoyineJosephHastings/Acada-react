@@ -12,49 +12,53 @@ const Notes = () => {
     resource: "Lecture Notes",
   });
   const [resourceDocuments, setResourceDocs] = useState([]);
-
   const { year, semester, courseCode, resource } = state;
+  const [error, setError] = useState(null);
 
   const handleChange = (e) => {
     setState({ ...state, [e.target.name]: e.target.value });
   };
 
   function handleLoadNotes(event) {
-    event.preventDefault();
-    event.target.setAttribute("disabled", true);
+    if (courseCode !== "" && courseCode !== "Select Course") {
+      event.preventDefault();
+      event.target.setAttribute("disabled", true);
 
-    const storageRef = projectDatabase.ref(
-      "university/makerere/cedat/school of engineering/mechanical engineering/" +
-        year +
-        "/" +
-        semester +
-        "/" +
-        courseCode +
-        "/" +
-        resource
-    );
-    let resourceDocs = [];
-    storageRef
-      .once("value", (snapshot) => {
-        snapshot.forEach((childSnapshot) => {
-          var childKey = childSnapshot.key;
-          var childData = childSnapshot.val();
-          resourceDocs.push(childData, childKey);
+      const storageRef = projectDatabase.ref(
+        "university/makerere/cedat/school of engineering/mechanical engineering/" +
+          year +
+          "/" +
+          semester +
+          "/" +
+          courseCode +
+          "/" +
+          resource
+      );
+      let resourceDocs = [];
+      storageRef
+        .once("value", (snapshot) => {
+          snapshot.forEach((childSnapshot) => {
+            var childKey = childSnapshot.key;
+            var childData = childSnapshot.val();
+            resourceDocs.push(childData, childKey);
+          });
+        })
+        .then((e) => {
+          setResourceDocs(resourceDocs);
+          event.target.removeAttribute("disabled");
+          setError(null);
+        })
+        .catch((e) => {
+          setResourceDocs(null);
+          event.target.removeAttribute("disabled");
         });
-      })
-      .then((e) => {
-        setResourceDocs(resourceDocs);
-
-        event.target.removeAttribute("disabled");
-      })
-      .catch((e) => {
-        setResourceDocs(null);
-        event.target.removeAttribute("disabled");
-      });
+    } else {
+      setError("Please Select a course from The List");
+    }
   }
 
   return (
-    <div>
+    <div className="container">
       <div>
         <h3>
           <b>Welcome to ACAD-Resources</b>
@@ -74,9 +78,26 @@ const Notes = () => {
         </div>
       )}
       <hr />
-      <form className="form">
+      <form>
         <fieldset className="fieldset">
           <legend>Choose Specific Notes</legend>
+          {error && (
+            <div
+              class="alert alert-danger alert-dismissible fade show"
+              role="alert"
+            >
+              <strong>Oh Sorry! </strong> {error}
+              <button
+                type="button"
+                class="close"
+                data-dismiss="alert"
+                aria-label="Close"
+                onClick={(e) => setError(null)}
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+          )}
           <div className="form-group">
             <label htmlFor="year">Year</label>
             <select
@@ -106,6 +127,7 @@ const Notes = () => {
               <option>Semester 2</option>
             </select>
           </div>
+
           <div className="for-group">
             <label htmlFor="courseCode">Course Code:</label>
             <select
