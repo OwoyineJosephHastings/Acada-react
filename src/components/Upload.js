@@ -35,9 +35,8 @@ export function Upload() {
 
       setError(null);
     } else {
-      console.log(selected.type);
       setAlertType("alert alert-danger");
-      setError("File type Not allowed");
+      setError("File not allowed");
     }
   };
   const UploadResource = (e) => {
@@ -58,7 +57,7 @@ export function Upload() {
               "/" +
               file.name
           );
-          console.log(timestamp);
+
           var uploadTask = ref.put(file);
 
           uploadTask.on(
@@ -137,7 +136,8 @@ export function Upload() {
                   // reset file and error
                   setFile(null);
                   setError(null);
-                  alert(
+                  console.clear();
+                  console.log(
                     "Successfully Uploaded \n Thank you!\n Feel free to share More"
                   );
                 });

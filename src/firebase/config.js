@@ -4,16 +4,14 @@ import "firebase/database";
 import "firebase/storage";
 import "firebase/auth";
 
-const firebaseConfig = {
-  apiKey: "AIzaSyDzcaQsMg9-3vSzg8ekuOxdMg9OuG_oEzo",
-  authDomain: "ssn-project-b13d6.firebaseapp.com",
-  databaseURL: "https://ssn-project-b13d6-default-rtdb.firebaseio.com",
-  projectId: "ssn-project-b13d6",
-  storageBucket: "ssn-project-b13d6.appspot.com",
-  messagingSenderId: "743494701844",
-  appId: "1:743494701844:web:359881ba2bbb5279efa801",
+var firebaseConfig = {
+  apiKey: "AIzaSyDlFylUccbt6sdSMSo77-nFR1Z8lTM-C4w",
+  authDomain: "acade-2ffba.firebaseapp.com",
+  projectId: "acade-2ffba",
+  storageBucket: "acade-2ffba.appspot.com",
+  messagingSenderId: "501697640872",
+  appId: "1:501697640872:web:494d28473745738ea2c59d",
 };
-
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 

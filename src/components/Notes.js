@@ -73,7 +73,7 @@ const Notes = () => {
           {resourceDocuments.map(function (res, index) {
             return (
               res.name &&
-              res.download_link && <Resources class="container" {...res} />
+              res.download_link && <Resources className="container" {...res} />
             );
           })}
         </div>
@@ -84,13 +84,13 @@ const Notes = () => {
           <legend>Choose Specific Notes</legend>
           {error && (
             <div
-              class="alert alert-danger alert-dismissible fade show"
+              className="alert alert-danger alert-dismissible fade show"
               role="alert"
             >
               <strong>Oh Sorry! </strong> {error}
               <button
                 type="button"
-                class="close"
+                className="close"
                 data-dismiss="alert"
                 aria-label="Close"
                 onClick={(e) => setError(null)}
