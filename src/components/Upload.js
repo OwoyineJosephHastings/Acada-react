@@ -114,6 +114,7 @@ export function Upload() {
                       resource +
                       "/" +
                       fileName,
+                    size: (Number(file.size) / (1024 * 1024)).toFixed(2),
                   });
 
                 promise.catch((e) => {
@@ -124,6 +125,7 @@ export function Upload() {
                   // successful upload to the database
                   // reset the state
                   setProgress(0);
+                  setError(null);
 
                   setState({
                     year: "Year 1",
@@ -273,6 +275,7 @@ export function Upload() {
                 <option>MEC4105</option>
                 <option>MEC4106</option>
                 <option>MEC4107</option>
+                <option>MEC4108</option>
               </optgroup>
             )}
             {year === "Year 4" && semester === "Semester 2" && (

@@ -16,7 +16,7 @@ export class Nav extends Component {
                 src="https://github.com/OwoyineJosephHastings/Acada/blob/main/resorces/images/logo.png?raw=true"
                 alt=""
                 width="30"
-                height="24"
+                height="40%"
                 className="d-inline-block align-top"
               />
               ACADA
@@ -24,7 +24,7 @@ export class Nav extends Component {
           </div>
         </nav>
 
-        <a className="navbar-brand" href="/">
+        <a className="navbar-brand" href="/home">
           Home
         </a>
         <button

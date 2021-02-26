@@ -72,7 +72,8 @@ const Notes = () => {
         >
           {resourceDocuments.map(function (res, index) {
             return (
-              res.name && res.download_link && <Resources class="" {...res} />
+              res.name &&
+              res.download_link && <Resources class="container" {...res} />
             );
           })}
         </div>
@@ -207,6 +208,7 @@ const Notes = () => {
                   <option>MEC4105</option>
                   <option>MEC4106</option>
                   <option>MEC4107</option>
+                  <option>MEC4108</option>
                 </optgroup>
               )}
               {year === "Year 4" && semester === "Semester 2" && (

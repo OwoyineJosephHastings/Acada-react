@@ -4,21 +4,21 @@ function Resources(props) {
   const [downloads, setDownloads] = useState(props.downloads);
   return (
     <div
-      className="row border border-white w-50"
-      style={{ display: "flex", padding: "2%", margin: "1%" }}
+      className="  "
+      style={{ display: "flex", padding: "2%", margin: "1%", Width: "100%" }}
       key={props.uploadedAt}
     >
       <img
-        className="col-3"
-        width="80%"
-        height="90%"
+        className=""
+        width="20%"
+        height="20%"
         alt="icon "
         src="https://upload.wikimedia.org/wikipedia/commons/8/87/PDF_file_icon.svg"
       />
-      <div className="col-9">
+      <div className="">
         <div>
           <h6>{props.name}</h6>
-          <p>Description </p>
+          <p>size: {props.size}Mbs</p>
           <span>{downloads} downloads</span>
         </div>
         <div>
