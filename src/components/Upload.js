@@ -354,7 +354,7 @@ export function Upload() {
           <button
             type="submit"
             id="submit"
-            className="btn btn-primary"
+            className="btn btn-outline-success"
             onClick={UploadResource}
           >
             Upload Resource

@@ -1,19 +1,21 @@
 import { useState, useContext } from "react";
-import { withRouter } from "react-router";
+import { Redirect, useLocation, withRouter } from "react-router";
 import { Link } from "react-router-dom";
 import { projectAuth } from "../firebase/config";
 import { AuthContext } from "./AuthProvider";
 
 const Login = ({ history }) => {
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const { currentUser } = useContext(AuthContext);
   const [state, setState] = useState({
     email: "",
     password: "",
   });
-  const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const { currentUser } = useContext(AuthContext);
+
+  const { locationState } = useLocation();
   if (currentUser) {
-    history.push("/notes");
+    return <Redirect to={locationState?.from || "/"} />;
   }
 
   const { email, password } = state;
@@ -21,13 +23,14 @@ const Login = ({ history }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setLoading(true);
+    setError(null);
 
     projectAuth
       .signInWithEmailAndPassword(email, password)
       .then((userCredential) => {
         setError(null);
         setLoading(false);
-        history.push("/notes");
+        history.push(locationState?.from || "/");
       })
       .catch((error) => {
         var errorMessage = error.message;
@@ -68,7 +71,7 @@ const Login = ({ history }) => {
           <div className="form-group">
             {loading && (
               <div
-                class="spinner-border text-primary mx-auto"
+                className="spinner-border text-primary mx-auto"
                 role="status"
               ></div>
             )}

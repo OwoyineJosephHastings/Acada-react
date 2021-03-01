@@ -1,31 +1,31 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { projectAuth } from "../firebase/config";
+import logo from "../statics/logo.png";
 
 export class Nav extends Component {
   render() {
     return (
       <nav
-        className="navbar navbar-expand-md bg-dark navbar-dark"
+        className="navbar navbar-expand-md bg-success navbar-dark"
         style={{ width: "100%", minHeight: "15vh" }}
       >
-        <nav className="navbar navbar-light bg-dark">
+        <nav className="navbar navbar-dark bg-success">
           <div className="container-fluid ">
             <Link className="navbar-brand" to="/">
               <img
-                src="https://github.com/OwoyineJosephHastings/Acada/blob/main/resorces/images/logo.png?raw=true"
+                src={logo}
                 alt=""
                 width="30"
                 height="40%"
                 className="d-inline-block align-top"
               />
-              ACADA
             </Link>
           </div>
         </nav>
 
-        <a className="navbar-brand" href="/home">
-          Home
+        <a className="navbar-brand" href="/">
+          ACADA
         </a>
         <button
           className="navbar-toggler"
@@ -50,6 +50,11 @@ export class Nav extends Component {
             <li className="nav-item">
               <Link className="nav-link" to="/notes">
                 Past Papers
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/contact">
+                Contact us
               </Link>
             </li>
             <li className="nav-item">

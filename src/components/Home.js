@@ -25,19 +25,31 @@ function Home() {
         <h4>Home of academic materials</h4>
         <hr />
         <h6>Reading sucks but not more than failure</h6>
-        <div>
-          <p className="lead">
-            <a className="btn btn-primary btn-lg" href="login" role="button">
-              Sign in
-            </a>
-            <a
-              className="btn btn-outline-success btn-lg"
-              href="signup"
-              role="button"
-            >
-              Sign up
-            </a>
-          </p>
+        <div
+          className="container mx-auto"
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: "1rem",
+          }}
+        >
+          <a
+            className="  btn btn-primary "
+            href="login"
+            role="button"
+            style={{ minWidth: "7.5rem" }}
+          >
+            Sign in
+          </a>
+          <a
+            className=" btn btn-outline-success"
+            href="signup"
+            style={{ minWidth: "7.5rem" }}
+            role="button"
+          >
+            Sign up
+          </a>
         </div>
       </div>
     </div>

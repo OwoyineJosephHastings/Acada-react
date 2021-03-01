@@ -3,6 +3,7 @@ import { projectDatabase } from "../firebase/config";
 import PDF_file_icon from "../statics/PDF_file_icon.svg";
 function Resources(props) {
   const [downloads, setDownloads] = useState(props.downloads);
+
   return (
     <div className="card bg-light" style={{ width: "500px", margin: "1%" }}>
       <div className="row no-gutters">
@@ -19,7 +20,7 @@ function Resources(props) {
           <div className="card-body">
             <h5 className="card-title">{props.name}</h5>
             <p className="card-text">
-              Downloads: {downloads} <br /> Download size: {props.size} Mbs
+              Downloads: {downloads} <br /> Download size: {props.size} Mbs{" "}
             </p>
             <a
               href={props.download_link}

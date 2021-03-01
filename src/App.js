@@ -8,7 +8,7 @@ import Notes from "./components/Notes";
 import SignUp from "./components/signup";
 import Upload from "./components/Upload";
 import Home from "./components/Home";
-
+import Contact from "./components/contact";
 import { AuthProvider } from "./components/AuthProvider";
 import PrivateRoute from "./components/PrivateRoute";
 import PasswordReset from "./components/PasswordReset";
@@ -18,6 +18,7 @@ function App() {
     <AuthProvider>
       <Router>
         <Route path="/" component={Nav} />
+        <Route exact path="/contact" component={Contact} />
         <Route exact path="/" component={Home}></Route>
         <PrivateRoute exact path="/notes" component={Notes} />
         <Route exact path="/login" component={Login} />

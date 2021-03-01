@@ -69,7 +69,7 @@ fieldset:hover{
 
 
   body{
-      background-image: url(https://i.pinimg.com/564x/87/c0/4f/87c04f7c07c52d6852d07217fd85071e.jpg);
+background-image: url(https://i.pinimg.com/564x/87/c0/4f/87c04f7c07c52d6852d07217fd85071e.jpg);
   background-repeat: repeat;
   background-position: center;
     }
@@ -83,6 +83,6 @@ fieldset:hover{
 @media (min-width: 992px) { 
  form{
     
-     max-width: 40%;
+     max-width: 80%;
  }
 }
