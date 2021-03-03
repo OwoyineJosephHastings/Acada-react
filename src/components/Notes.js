@@ -61,7 +61,7 @@ const Notes = () => {
   }
 
   return (
-    <div className="container">
+    <div className="container ">
       <div>
         <h3>
           <b>Welcome to ACAD-Resources</b>
@@ -82,7 +82,7 @@ const Notes = () => {
         </div>
       )}
       <hr />
-      <form>
+      <form className="form bg-white">
         <legend>Choose Specific Notes</legend>
         {error && (
           <div
@@ -248,6 +248,7 @@ const Notes = () => {
             <option>Tests</option>
             <option>Assignments</option>
             <option>Project Reports</option>
+            <option>Past Papers</option>
           </select>
         </div>
 
@@ -255,7 +256,7 @@ const Notes = () => {
           <button
             type="button"
             id="submit"
-            className="btn-lg btn-primary "
+            className="btn-lg btn-outline-success "
             style={{ minWidth: "10rem" }}
             onClick={handleLoadNotes}
           >

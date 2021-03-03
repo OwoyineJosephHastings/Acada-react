@@ -21,6 +21,8 @@ function Resources(props) {
             <h5 className="card-title">{props.name}</h5>
             <p className="card-text">
               Downloads: {downloads} <br /> Download size: {props.size} Mbs{" "}
+              <br />
+              Academic Year: {props.academicYear}
             </p>
             <a
               href={props.download_link}

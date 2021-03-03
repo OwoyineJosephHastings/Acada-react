@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { projectStorage, projectDatabase, timestamp } from "../firebase/config";
 export function Upload() {
   const [state, setState] = useState({
@@ -12,6 +12,7 @@ export function Upload() {
   const [progress, setProgress] = useState();
 
   const { year, semester, courseCode, resource, fileName } = state;
+  var NotesYear = useRef(null);
   const [file, setFile] = useState(null);
   const [error, setError] = useState(null);
   const [alertType, setAlertType] = useState("alert alert-danger");
@@ -114,6 +115,7 @@ export function Upload() {
                       "/" +
                       fileName,
                     size: (Number(file.size) / (1024 * 1024)).toFixed(2),
+                    academicYear: NotesYear.current.value,
                   });
 
                 promise.catch((e) => {
@@ -163,7 +165,7 @@ export function Upload() {
   };
 
   return (
-    <form className="form">
+    <form className="form bg-white">
       <fieldset className="fieldset">
         <legend>Specify Resource to Upload</legend>
         <div className="form-group">
@@ -307,6 +309,7 @@ export function Upload() {
             <option>Tests</option>
             <option>Assignments</option>
             <option>Project Reports</option>
+            <option>Past Papers</option>
           </select>
         </div>
 
@@ -320,6 +323,14 @@ export function Upload() {
             className="form-control"
             id="file_name"
             required
+          />
+        </div>
+        <div className="form-group">
+          <input
+            type="text"
+            placeholder="Academic Year"
+            required
+            ref={NotesYear}
           />
         </div>
 

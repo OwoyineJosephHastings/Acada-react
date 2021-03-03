@@ -95,7 +95,7 @@ function Contact() {
           />
         </div>
         <button
-          className="form-control btn-success"
+          className="form-control btn-outline-success"
           type="button"
           onClick={handleSubmit}
           style={{ maxWidth: "15rem" }}

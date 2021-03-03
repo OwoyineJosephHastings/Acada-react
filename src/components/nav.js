@@ -1,21 +1,22 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { projectAuth } from "../firebase/config";
 import logo from "../statics/logo.png";
-
 export class Nav extends Component {
   render() {
     return (
       <nav
-        className="navbar navbar-expand-md bg-success navbar-dark"
-        style={{ width: "100%", minHeight: "15vh" }}
+        className="navbar navbar-expand-sm bg-success navbar-dark"
+        style={{
+          width: "100%",
+          minHeight: "15vh",
+        }}
       >
         <nav className="navbar navbar-dark bg-success">
           <div className="container-fluid ">
             <Link className="navbar-brand" to="/">
               <img
                 src={logo}
-                alt=""
+                alt="Acada logo"
                 width="30"
                 height="40%"
                 className="d-inline-block align-top"
@@ -24,7 +25,7 @@ export class Nav extends Component {
           </div>
         </nav>
 
-        <a className="navbar-brand" href="/">
+        <a style={{ fontSize: "2rem" }} className="navbar-brand" href="/">
           ACADA
         </a>
         <button
@@ -35,7 +36,11 @@ export class Nav extends Component {
         >
           <span className="navbar-toggler-icon"></span>
         </button>
-        <div className="collapse navbar-collapse" id="collapsibleNavbar">
+        <div
+          className="collapse navbar-collapse"
+          id="collapsibleNavbar"
+          style={{ justifyContent: "center" }}
+        >
           <ul className="navbar-nav">
             <li className="nav-item">
               <Link className="nav-link" to="/">
@@ -57,14 +62,7 @@ export class Nav extends Component {
                 Contact us
               </Link>
             </li>
-            <li className="nav-item">
-              <button
-                className="btn btn-outline-danger"
-                onClick={(e) => projectAuth.signOut()}
-              >
-                Signout
-              </button>
-            </li>
+            <li className="nav-item"></li>
           </ul>
         </div>
       </nav>

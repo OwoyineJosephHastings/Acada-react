@@ -48,7 +48,7 @@ const Login = ({ history }) => {
   return (
     <>
       <h1> ACADA LOGIN</h1>
-      <form>
+      <form className="bg-white">
         {error && (
           <div
             className="alert alert-danger alert-dismissible fade show"
@@ -103,15 +103,15 @@ const Login = ({ history }) => {
               Login
             </button>
           </div>
-          <div className="form-control">
-            <span className="mx-auto">
+          <div className="form-group">
+            <div className=" div mx-auto">
               Need an acount? <Link to="/signup">Sign up</Link>
-            </span>
-            <p></p>
-            <span className="mx-auto">
+            </div>
+
+            <div className=" div mx-auto bg-white">
               Trouble Signing in?{" "}
               <Link to="/resetpassword">Reset password</Link>
-            </span>
+            </div>
           </div>
         </fieldset>
       </form>
