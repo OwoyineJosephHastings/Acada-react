@@ -37,6 +37,7 @@ const Notes = () => {
       );
       let resourceDocs = [];
       storageRef
+        .orderByChild("uploadedAt")
         .once("value", (snapshot) => {
           snapshot.forEach((childSnapshot) => {
             var childKey = childSnapshot.key;
