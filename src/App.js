@@ -12,12 +12,14 @@ import Contact from "./components/contact";
 import { AuthProvider } from "./components/AuthProvider";
 
 import PasswordReset from "./components/PasswordReset";
+import Course from "./components/Course";
 
 function App() {
   return (
     <AuthProvider>
       <Router>
-        <Route path="/" component={Nav} />
+        <Route exact path="/" component={Nav} />
+        <Route path="/courses"component={Course} />
         <Route exact path="/contact" component={Contact} />
         <Route exact path="/" component={Home}></Route>
         <Route exact path="/notes" component={Notes} />

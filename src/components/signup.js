@@ -44,7 +44,7 @@ const SignUp = ({ history }) => {
   };
 
   return (
-    <form className="bg-white " onSubmit={handleSubmit}>
+    <form  onSubmit={handleSubmit}>
       <fieldset>
         <legend>
           <h3> CREATE NEW ACOUNT</h3>

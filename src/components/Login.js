@@ -48,7 +48,7 @@ const Login = ({ history }) => {
   return (
     <>
       <h1> ACADA LOGIN</h1>
-      <form className="bg-white">
+      <form >
         {error && (
           <div
             className="alert alert-danger alert-dismissible fade show"
