@@ -1,144 +1,20 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from 'react';
 
-import { projectDatabase } from "../firebase/config";
-import Resources from "./Resources";
 
-const Notes = () => {
-  const [state, setState] = useState({
-    year: "Year 1",
-    semester: "Semester 1",
+const Courses = (props) => {
+
+ const [state, setState] = useState({
+    year: props.year,
     courseCode: "",
-    resource: "Lecture Notes",
-  });
-  const [loading, setLoading] = useState(false);
-  const [resourceDocuments, setResourceDocs] = useState([]);
-  const { year, semester, courseCode, resource } = state;
-  const [error, setError] = useState(null);
-
-  const handleChange = (e) => {
+    semester: props.semester});
+    const { year, semester,courseCode } =state;
+    const handleChange = (e) => {
     setState({ ...state, [e.target.name]: e.target.value });
   };
 
-  function handleLoadNotes(event) {
-    if (courseCode !== "" && courseCode !== "Select Course") {
-      event.preventDefault();
-      event.target.setAttribute("disabled", true);
-      setLoading(true);
-      const storageRef = projectDatabase.ref(
-        "university/makerere/cedat/school of engineering/mechanical engineering/" +
-          year +
-          "/" +
-          semester +
-          "/" +
-          courseCode +
-          "/" +
-          resource
-      );
-      let resourceDocs = [];
-      storageRef
-        .orderByChild("uploadedAt")
-        .once("value", (snapshot) => {
-          snapshot.forEach((childSnapshot) => {
-            var childKey = childSnapshot.key;
-            var childData = childSnapshot.val();
-            resourceDocs.push(childData, childKey);
-          });
-        })
-        .then((e) => {
-          setResourceDocs(resourceDocs);
-          event.target.removeAttribute("disabled");
-          setError(null);
-          setLoading(false);
-        })
-        .catch((e) => {
-          setResourceDocs(null);
-          event.target.removeAttribute("disabled");
-          setLoading(false);
-        });
-    } else {
-      setError("Please Select a course from The List");
-    }
-  }
 
-  return (
-    <div className="container ">
-      <div>
-        <h3>
-          <b>Welcome to ACAD-Resources</b>
-        </h3>
-        <h6>{year + ", " + semester + ", " + courseCode + ", " + resource}</h6>
-      </div>
-      {resourceDocuments.length !== 0 && (
-        <div
-          className="container-fluid  "
-          style={{ display: "flex", flexWrap: "wrap", padding: "1px" }}
-        >
-          {resourceDocuments.map(function (res, index) {
-            return (
-              res.name &&
-              res.download_link && <Resources className="container" {...res} />
-            );
-          })}
-        </div>
-      )}
-      <hr />
-      <form className="form ">
-        <legend>Choose Specific Notes</legend>
-        {error && (
-          <div
-            className="alert alert-danger alert-dismissible fade show"
-            role="alert"
-          >
-            <strong>Oh Sorry! </strong> {error}
-            <button
-              type="button"
-              className="close"
-              data-dismiss="alert"
-              aria-label="Close"
-              onClick={(e) => setError(null)}
-            >
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-        )}
-        {loading && (
-          <div
-            className="spinner-border text-primary mx-auto"
-            role="status"
-          ></div>
-        )}
-        <div className="form-group">
-          <label htmlFor="year">Year</label>
-          <select
-            name="year"
-            onChange={handleChange}
-            value={year}
-            id="year"
-            className="form-control"
-          >
-            <option>Year 1</option>
-            <option>Year 2</option>
-            <option>Year 3</option>
-            <option>Year 4</option>
-          </select>
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="semester">Semester</label>
-          <select
-            name="semester"
-            onChange={handleChange}
-            value={semester}
-            id="semester"
-            className="form-control"
-          >
-            <option>Semester 1</option>
-            <option>Semester 2</option>
-          </select>
-        </div>
-
-        <div className="for-group">
+    return (
+          <div className="for-group">
           <label htmlFor="courseCode">Course Code:</label>
           <select
             name="courseCode"
@@ -235,37 +111,7 @@ const Notes = () => {
             )}
           </select>
         </div>
-        <div className="form-group">
-          <label htmlFor="resourceType">Resources Type</label>
-          <select
-            name="resource"
-            value={resource}
-            onChange={handleChange}
-            id="resourceType"
-            className="form-control"
-          >
-            <option>Lecture Notes</option>
-            <option>Tests</option>
-            <option>Assignments</option>
-            <option>Project Reports</option>
-            <option>Past Papers</option>
-          </select>
-        </div>
+    );
+}
 
-        <div className="for-group">
-          <button
-            type="button"
-            id="submit"
-            className="btn-lg btn-outline-success "
-            style={{ minWidth: "10rem" }}
-            onClick={handleLoadNotes}
-          >
-            Load
-          </button>
-        </div>
-      </form>
-    </div>
-  );
-};
-
-export default Notes;
+export default Courses;

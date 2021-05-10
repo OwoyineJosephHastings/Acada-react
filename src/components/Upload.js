@@ -206,12 +206,12 @@ export function Upload() {
             onClick={(e) => setError(null)}
             className="form-control"
             id="courseCode"
-          >{year === "Year 1" && semester === "Semester 1" && (
+          >
+            {year === "Year 1" && semester === "Semester 1" && (
               <optgroup label="SEMESTER ONE">
                 <option>Select Course</option>
-                <option value="EMT1101">EMT1101: Eng. Maths I</option>
-                <option value="TEC1101">TEC1101: Communication Skills</option>
-                <option value="MEC1101">MEC1101: Engineering Drawing</option>
+                <option value="EMT1101">EMT1101: Engineering Mathematics I</option>
+                <option value="TEC1101">TEC1101: Communication Skills for Technology</option>                <option value="MEC1101">MEC1101: Engineering Drawing</option>
                 <option value="MEC1102">MEC1102: Engineering mechanics I</option>
                 <option value="MEC1103">MEC1103: Electrical Engineering for Mechanical Engineers I</option>
               </optgroup>
@@ -239,11 +239,11 @@ export function Upload() {
             {year === "Year 2" && semester === "Semester 2" && (
               <optgroup label="SEMESTER TWO">
                 <option>Select Course</option>
-                <option>MEC2201</option>
-                <option>MEC2202</option>
-                <option>MEC2203</option>
-                <option>MEC2204</option>
-                <option>MEC2205</option>
+                <option value="MEC2201">MEC2201: Electrical Engineering II</option>
+                <option value="MEC2202">MEC2202: Theory of Machine Elements</option>
+                <option value="MEC2203">MEC2203: Computer Programming</option>
+                <option value="MEC2204">MEC2204: Material Science and Engineering I</option>
+                <option value="MEC2205">MEC2205: Fluid Mechanics II</option>
               </optgroup>
             )}
             {year === "Year 3" && semester === "Semester 1" && (
@@ -259,11 +259,11 @@ export function Upload() {
             {year === "Year 3" && semester === "Semester 2" && (
               <optgroup label="SEMESTER TWO">
                 <option>Select Course</option>
-                <option>MEC3201</option>
-                <option>MEC3202</option>
-                <option>MEC3203</option>
-                <option>MEC3204</option>
-                <option>MEC3205</option>
+                <option value="MEC3201">MEC3201: Maintenance Engineering</option>
+                <option value="MEC3202">MEC3202: Production Engineering II</option>
+                <option value="MEC3203">MEC3203: Product Design and Development</option>
+                <option value="MEC3204">MEC3204: Heat Transfer</option>
+                <option value="MEC3205">MEC3205: Control Systems Engineering</option>
               </optgroup>
             )}
             {year === "Year 4" && semester === "Semester 1" && (
@@ -286,13 +286,14 @@ export function Upload() {
                 <option value="MEC4202">MEC4202: Environmental Engineering</option>
                 <option value="MEC4203">MEC4203: </option>
                 <option value="MEC4204">MEC4204: Mechanical Engineering Project II</option>
-                <option value="MEC4205">MEC4205: </option>
-                <option value="MEC4206">MEC4206: </option>
-                <option value="MEC4207">MEC4207: </option>
+                <option value="MEC4205">MEC4205: Air Conditioning and Refrigeration (elective)</option>
+                <option value="MEC4206">MEC4206: Fluid Power systems (elective)</option>
+                <option value="MEC4207">MEC4207: Operations research and project management for Mechanical Engineers (elective)</option>
                 <option value="MEC4208">MEC4208: </option>
-                <option value="MEC4209">MEC4209: </option>
+                <option value="MEC4209">MEC4209: Automotive Engineering (elective)</option>
               </optgroup>
             )}
+
           </select>
         </div>
         <div className="form-group">

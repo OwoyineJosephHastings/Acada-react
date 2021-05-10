@@ -1,5 +1,5 @@
 import React from "react";
-import University from "./University";
+
 
 function Home() {
   return (
@@ -51,7 +51,7 @@ function Home() {
           </a>
         </div>
       </div>
-      <University University="makerere"/>
+     
       <footer
         style={{
           position: "fixed",
