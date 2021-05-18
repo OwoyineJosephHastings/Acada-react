@@ -18,8 +18,8 @@ function App() {
   return (
     <AuthProvider>
       <Router>
-        <Route exact path="/" component={Nav} />
-        <Route path="/courses"component={Course} />
+        <Route path="/" component={Nav} />
+        <Route exact path="/courses"component={Course} />
         <Route exact path="/contact" component={Contact} />
         <Route exact path="/" component={Home}></Route>
         <Route exact path="/notes" component={Notes} />
