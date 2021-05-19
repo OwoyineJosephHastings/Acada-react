@@ -5,13 +5,13 @@ export class Nav extends Component {
   render() {
     return (
       <nav
-        className="navbar navbar-expand-sm bg-00ccbb navbar-dark"
+        className="navbar navbar-expand-sm bg-#00ccbb navbar-dark"
         style={{
           width: "100%",
           minHeight: "15vh",
         }}
       >
-        <nav className="navbar navbar-dark bg-00ccbb">
+        <nav className="navbar navbar-dark bg-#00ccbb">
           <div className="container-fluid ">
             <Link className="navbar-brand" to="/">
               <img
