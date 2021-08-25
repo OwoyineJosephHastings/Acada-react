@@ -15,8 +15,7 @@ const Login = ({ history }) => {
 
   const { locationState } = useLocation();
   if (currentUser) {
-    //return <Redirect to={locationState?.from || "/"} />;
-    return <Redirect to={"/notes" || "/"} />;
+    return <Redirect to={locationState?.from || "/"} />;
   }
 
   const { email, password } = state;

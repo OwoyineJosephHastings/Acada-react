@@ -21,16 +21,16 @@ const Course = () => {
               <p>Lorem ipsum dolor sit ame.</p>
               <ul className="nav nav-pills flex-column">
                 <li className="nav-item">
-                  <a className="nav-link active" href="#">Home</a>
+                  <a className="nav-link active" href="/">Home</a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="#">Dashboard</a>
+                  <a className="nav-link" href="/">Dashboard</a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="#">Courses</a>
+                  <a className="nav-link" href="/">Courses</a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link disabled" href="#">Support</a>
+                  <a className="nav-link disabled" href="/">Support</a>
                 </li>
               </ul>
               <hr className="d-sm-none" />
@@ -58,13 +58,13 @@ const Course = () => {
               </div>
               <div data-spy="scroll" data-target="#list-example" data-offset={0} className="scrollspy-example">
                 <h4 id="list-item-1">Simplified Notes </h4>
-                <p /><h5><a href="https://drive.google.com/file/d/1-NiLXri6WPyG1fMG7wVe1cG8Nl2MV5Rl/view?usp=sharing">Download Simplified Notes pdf</a></h5><p />
+                <p /><h5><a href="/">Download Simplified Notes pdf</a></h5><p />
                 <h4 id="list-item-2">Topic 2</h4>
                 <p>...</p>
                 <h4 id="list-item-3">Topic 3</h4>
                 <p>...</p>
                 <h4 id="list-item-4">Assessment Material</h4>
-                <p /><h5><a href="../docs/Heat Transfer/Open_book test_solution.pdf">Download Open book test solutions 2020 pdf </a></h5><p />
+                <p /><h5><a href="/">Download Open book test solutions 2020 pdf </a></h5><p />
               </div>
               <p>Some text..</p>
               <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>

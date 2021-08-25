@@ -12,14 +12,14 @@ import Contact from "./components/contact";
 import { AuthProvider } from "./components/AuthProvider";
 
 import PasswordReset from "./components/PasswordReset";
-import Course from "./components/Course";
+import ShowContacts from "./components/ShowContacts"; 
 
 function App() {
   return (
     <AuthProvider>
       <Router>
-        <Route path="/" component={Nav} />
-        <Route exact path="/courses"component={Course} />
+        <Route exact path="/" component={Nav} />
+        <Route path="/courses"component={ShowContacts} />
         <Route exact path="/contact" component={Contact} />
         <Route exact path="/" component={Home}></Route>
         <Route exact path="/notes" component={Notes} />
@@ -27,6 +27,7 @@ function App() {
         <Route exact path="/signup" component={SignUp} />
         <Route exact path="/upload" component={Upload} />
         <Route exact path="/resetpassword" component={PasswordReset} />
+
       </Router>
     </AuthProvider>
   );
