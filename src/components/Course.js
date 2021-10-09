@@ -43,85 +43,80 @@ const Course = (match) => {
 
   return (
     <div className="container">
-      <div className="jumbotron text-center mx-auto pl-3">
-        <h3 style={{ display: "flex", flexWrap: "wrap" }}>
-          {loading && <Loading property="Course Name" />}
-          {resourceDocuments.length !== 0 && resourceDocuments[0].name}
-        </h3>
-        <h3>ON ACADA</h3>
-      </div>
+      <style>
+        @import
+        url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+      </style>
+
       <Navbar />
       <div className="container" style={{ marginTop: "10px" }}>
+        <h2>
+          {resourceDocuments.length ? (
+            resourceDocuments[0].name
+          ) : (
+            <Loading property="Course name" />
+          )}
+        </h2>
         <div className="row">
-          <div className="col-sm-4 shadow-md p-3 mb-3 bg-white rounded">
+          <div className="col-sm-4  p-3 pr-3 bg-white rounded">
             <h6>
               Author:{"  "}
               {resourceDocuments.length
                 ? resourceDocuments[0].created_by
                 : "..."}
             </h6>
-            {/* <h5>Profile</h5>
-            <div className="fakeimg">Image</div>
-            <p>
-              Some text about me in culpa qui officia deserunt mollit anim..
-            </p> */}
-            {/* <h3>Some Links</h3>
-            <p>Lorem ipsum dolor sit ame.</p> */}
-            <ul className="nav nav-pill flex-column">
-              <li className="nav-item">
-                <a className="nav-link " href="#list-item-1">
-                  Lecture Notes
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#list-item-2">
-                  Past Papers
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#list-item-3">
-                  Assignments
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link disabled" href="#list-item-4">
-                  Tests
-                </a>
-              </li>
-              <li>
-                "The way you learn anything is that something fails, and you
-                figure out how not to have it fail again."
-              </li>
-            </ul>
-            <hr className="d-sm-none" />
-          </div>
-          <div className="col-sm-8 shadow-lg p-3 mb-3  bg-white rounded">
-            <h2>
-              {resourceDocuments.length
-                ? resourceDocuments[0].name
-                : "course name"}
-            </h2>
-            <h5>
-              Created:
-              {loading && <Loading property="" />}
-              {resourceDocuments.length
-                ? " " + resourceDocuments[0].created_at
-                : "..."}
-            </h5>
-            <div className="fakeimg" style={{ width: "20rem" }}>
-              {/* <img
-                className="card-img-top"
-                src={
-                  resourceDocuments.length ? resourceDocuments[0].caption : ""
-                }
-                alt={
-                  resourceDocuments.length
-                    ? resourceDocuments[0].name + " image caption"
-                    : "course image caption"
-                }
-              /> */}
-            </div>
 
+            <div className="card">
+              <div className="card-header" id="headingTwo">
+                <h5 className="mb-0">
+                  <button
+                    className="btn btn-link collapsed"
+                    type="button"
+                    data-toggle="collapse"
+                    data-target="#collapseTwo"
+                    aria-expanded="false"
+                    aria-controls="collapseTwo"
+                  >
+                    <h6>Course Materials</h6>
+                  </button>
+                </h5>
+              </div>
+              <div
+                id="collapseTwo"
+                className="collapse show"
+                aria-labelledby="headingTwo"
+                data-parent="#accordionExample"
+              >
+                <div className="card-body">
+                  <div id="list-example" className="list-group">
+                    <a
+                      className="list-group-item list-group-item-action"
+                      href="#list-item-1"
+                    >
+                      Lecture Notes
+                    </a>
+                    <a
+                      className="list-group-item list-group-item-action"
+                      href="#list-item-2"
+                    >
+                      Past Papers
+                    </a>
+                    <a
+                      className="list-group-item list-group-item-action disabled"
+                      href="#list-item-3"
+                    >
+                      Assignments (coming soon)
+                    </a>
+                    <a
+                      className="list-group-item list-group-item-action"
+                      href="#list-item-4"
+                    >
+                      Tests (coming soon)
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
             <div
               className="accordion"
               id="accordionExample"
@@ -155,58 +150,19 @@ const Course = (match) => {
                   </div>
                 </div>
               </div>
-              <div className="card">
-                <div className="card-header" id="headingTwo">
-                  <h5 className="mb-0">
-                    <button
-                      className="btn btn-link collapsed"
-                      type="button"
-                      data-toggle="collapse"
-                      data-target="#collapseTwo"
-                      aria-expanded="false"
-                      aria-controls="collapseTwo"
-                    >
-                      <h6>Course Materials</h6>
-                    </button>
-                  </h5>
-                </div>
-                <div
-                  id="collapseTwo"
-                  className="collapse"
-                  aria-labelledby="headingTwo"
-                  data-parent="#accordionExample"
-                >
-                  <div className="card-body">
-                    <div id="list-example" className="list-group">
-                      <a
-                        className="list-group-item list-group-item-action"
-                        href="#list-item-1"
-                      >
-                        Lecture Notes
-                      </a>
-                      <a
-                        className="list-group-item list-group-item-action"
-                        href="#list-item-2"
-                      >
-                        Past Papers
-                      </a>
-                      <a
-                        className="list-group-item list-group-item-action"
-                        href="#list-item-3"
-                      >
-                        Assignments
-                      </a>
-                      <a
-                        className="list-group-item list-group-item-action"
-                        href="#list-item-4"
-                      >
-                        Tests
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
+
+            <ul className="nav nav-pill flex-column"></ul>
+            <hr className="d-sm-none" />
+          </div>
+          <div className="col-sm-8 shadow-sm p-3 mb-3  bg-white rounded">
+            <h5>
+              Created:
+              {loading && <Loading property="Date of Creation" />}
+              {resourceDocuments.length
+                ? " " + resourceDocuments[0].created_at
+                : "..."}
+            </h5>
 
             <div
               data-spy="scroll"
@@ -215,6 +171,21 @@ const Course = (match) => {
               className="scrollspy-example"
             >
               <h4 id="list-item-1">Lecture Notes </h4>
+              <div
+                style={{
+                  padding: "30px",
+                  margin: "20px",
+                  boxShadow: "5px 5px 5px 5px",
+                  fontFamily: "Indie Flower",
+                  fontSize: "25px",
+                  textAlign: "center",
+                }}
+              >
+                <p>
+                  "The way you learn anything is that something fails, and you
+                  figure out how not to have it fail again."
+                </p>
+              </div>
 
               <div
                 style={{
@@ -252,27 +223,25 @@ const Course = (match) => {
                     })
                   : "..."}
               </div>
-              <h4 id="list-item-3">Assignments</h4>
-              <p>...</p>
-              <h4 id="list-item-4">Tests</h4>
-              <p />
-              <h5>
-                <a href="/">Download Open book test solutions 2020 pdf </a>
-              </h5>
-              <p />
+              <h4 id="list-item-3">Inspiration</h4>
             </div>
-            <p>INSPIRATION</p>
-            <p>
-              1. “Strive for perfection in everything you do. Take the best that
-              exists and make it better. When it does not exist, design it.”
-              2.The way you learn anything is that something fails, and you
-              figure out how not to have it fail again.
-            </p>
+            <div
+              style={{
+                padding: "30px",
+                margin: "20px",
+                boxShadow: "5px 5px 5px 5px",
+                fontFamily: "Indie Flower",
+                fontSize: "25px",
+                textAlign: "center",
+              }}
+            >
+              <p>
+                "The way you learn anything is that something fails, and you
+                figure out how not to have it fail again."
+              </p>
+            </div>
           </div>
         </div>
-      </div>
-      <div className="jumbotron text-center" style={{ marginBottom: 0 }}>
-        <p>Footer</p>
       </div>
     </div>
   );

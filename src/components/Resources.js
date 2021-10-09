@@ -1,14 +1,24 @@
 import React, { useState } from "react";
 import { projectDatabase } from "../firebase/config";
 import PDF_file_icon from "../statics/PDF_file_icon.svg";
+
 function Resources(props) {
   const [downloads, setDownloads] = useState(props.downloads);
 
   return (
     <div
-      className="card shadow-lg p-3 mb-5 bg-white rounded"
-      style={{ margin: "10px", width: "20rem" }}
+      className="card shadow-md p-3 mb-5 bg-white rounded"
+      style={{
+        margin: "10px",
+        width: "20rem",
+        fontFamily: "Roboto Mono serif",
+      }}
     >
+      <style>
+        @import
+        url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;333;700&family=Roboto+Slab:wght@100&display=swap');
+      </style>
+      ;
       <div className="row no-gutters">
         <div className="col-md-2">
           <img
