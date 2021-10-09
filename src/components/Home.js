@@ -59,15 +59,20 @@ function Home() {
 
   return (
     <div>
-      <h1 className="ml-8">Courses</h1>
-      <div className="form-group">
-        <fieldset className="form-group ">
-          <div className="row shadow-lg p-3 mb-3  bg-white rounded">
+      <div className="container" style={{ display: "flex", flexWrap: "wrap" }}>
+        <fieldset className="form-group mx-auto">
+          <div className="row shadow-lg p-3 mx-auto  bg-white rounded">
             <legend className="col-form-label col-sm-2 pt-0 mr-3 ">
               Semester
             </legend>
 
-            <div className="col-sm-10">
+            <div
+              className="col-sm-10 "
+              style={{
+                display: "flex",
+                maxHeight: "2rem",
+              }}
+            >
               <div className="form-check">
                 <input
                   className="form-check-input"
@@ -99,11 +104,19 @@ function Home() {
             </div>
           </div>
         </fieldset>
-        <fieldset className="form-group ">
-          <div className="row shadow-lg p-3 mb-2  bg-white rounded">
+        <fieldset className="form-group mx-auto ">
+          <div className="row shadow-lg  bg-white rounded">
             <legend className="col-form-label col-sm-2 pt-0 mr-2 ">Year</legend>
 
-            <div className="col-sm-10">
+            <div
+              className="col-sm-10"
+              style={{
+                display: "flex",
+                maxHeight: "4rem",
+                justifyContent: "space-between",
+                margin: "1rem",
+              }}
+            >
               <div className="form-check">
                 <input
                   className="form-check-input"
@@ -113,7 +126,7 @@ function Home() {
                   value="Year 1"
                   onClick={changeYear}
                 />
-                <label className="form-check-label" htmlFor="gridRadios3">
+                <label className="form-check-label " htmlFor="gridRadios3">
                   Year 1
                 </label>
               </div>
@@ -157,13 +170,14 @@ function Home() {
                   Year 4
                 </label>
               </div>
-              <a href="/notes">
-                <h5>More Courses</h5>
-              </a>
             </div>
           </div>
         </fieldset>
       </div>
+      <a href="/notes">
+        <h5>More Courses</h5>
+      </a>
+      <h2 className="ml-8">Courses</h2>
       {loading && <Loading property=" Acada Courses" />}
       <div>
         {resourceDocuments.length === 0 && !loading && (

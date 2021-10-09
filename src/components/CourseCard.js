@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 function CourseCard(props) {
   const [course, setCourse] = useState(props.course);
   return (
-    <div className="card" style={{ width: "18rem", margin: "0.5rem" }}>
+    <div className="card mx-3" style={{ width: "18rem", margin: "0.5rem" }}>
       <img
         className=""
         src={course.caption}
