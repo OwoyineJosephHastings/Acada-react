@@ -20,5 +20,4 @@ const projectDatabase = firebase.database();
 const projectAuth = firebase.auth();
 const timestamp = firebase.database.ServerValue.TIMESTAMP;
 const TaskState = projectStorage.TaskState;
-
 export { projectStorage, projectDatabase, timestamp, projectAuth, TaskState };

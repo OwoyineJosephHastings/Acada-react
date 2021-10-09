@@ -5,20 +5,23 @@ function Resources(props) {
   const [downloads, setDownloads] = useState(props.downloads);
 
   return (
-    <div className="card bg-light" style={{ width: "500px", margin: "1%" }}>
+    <div
+      className="card shadow-lg p-3 mb-5 bg-white rounded"
+      style={{ margin: "10px", width: "20rem" }}
+    >
       <div className="row no-gutters">
         <div className="col-md-2">
           <img
             className="card-img"
             src={PDF_file_icon}
             alt="resource icon"
-            width="100px"
-            height="70rem"
+            width="70px"
+            height="38rem"
           />
         </div>
         <div className="col-md-10">
           <div className="card-body">
-            <h5 className="card-title">{props.name}</h5>
+            <h6 className="card-title">{props.name}</h6>
             <p className="card-text">
               Downloads: {downloads} <br /> Download size: {props.size} Mbs{" "}
               <br />
@@ -26,7 +29,7 @@ function Resources(props) {
             </p>
             <a
               href={props.download_link}
-              className="btn btn-outline-success"
+              className="btn btn-success"
               onClick={(event) => {
                 event.target.setAttribute("disabled", "disabled");
                 projectDatabase
