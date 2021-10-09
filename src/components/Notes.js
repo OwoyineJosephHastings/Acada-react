@@ -346,7 +346,6 @@ const Notes = () => {
         <div className="for-group">
           <a
             href="/"
-            type="button"
             id="submit"
             className="btn-lg btn-outline-danger "
             style={{ minWidth: "10rem" }}
