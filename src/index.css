@@ -1,84 +1,233 @@
-#root{
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+html,
+body {
+  overflow-x: hidden;
+}
+
+#root {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  padding-bottom: 200px;
+}
+
+.nav-link {
+  color: #ddd !important;
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  transition: all 0.3s ease-in-out;
+}
+
+.navbar-brand .navbar-brand-title {
+  color: #eee;
+  font-size: clamp(1.8rem, 3vw, 5vw);
+  font-weight: 800;
+}
+
+.login-wrapper {
+  max-width: 600px;
+  margin: 1rem auto;
+  width: 100%;
+  padding: 2rem;
+}
+
+:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 1rem;
+  background: #222;
+  font-weight: 600;
+  color: #ddd;
+  font-size: 1rem;
+  text-decoration: none;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.footer ul {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  align-items: center;
+  column-gap: 1rem;
+  row-gap: 0.5rem;
+}
+
+.footer ul a {
+  color: #1a73e8;
+}
+
+.form-check-label {
+  cursor: pointer;
+}
+
+.year-selection {
+  display: flex;
+  max-height: 4rem;
+  justify-content: space-between;
+  margin: 0 1rem;
+}
+
+.course-selection {
+  margin-top: 8px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: stretch;
+  justify-content: center;
+  column-gap: 1rem;
+  row-gap: 4px;
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.download-card {
+  text-decoration: none !important;
+  transition: 0.3s;
+}
+
+.download-card:hover {
+  transform: scale(1.05);
+  background-color: #ded !important;
+}
+
+.download-card img {
+  transition: 1s;
+}
+
+.download-card:hover img.zoom {
+  transform: scale(1.25);
+  object-fit: cover;
+  object-position: center;
+}
+
+@media (max-width: 700px) {
+  .course-selection {
+    grid-template-columns: 1fr;
+  }
+
+  .course-selection .years {
+    grid-column: span 1;
+  }
+}
+
+@media (max-width: 624px) {
+  .course-selection {
+    grid-template-columns: 1fr;
+  }
+
+  .course-selection .years {
+    grid-column: span 1;
+  }
+
+  .footer ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .footer ul li:last-child {
+    grid-column: span 2;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .login-wrapper {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 993px) {
+  #course-container {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-form{
-    width: 85%;
-    margin:auto;
-}
-fieldset{
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    padding: 1.5rem 2rem;
-    border-radius: 30px;
+    flex-direction: column-reverse;
+  }
+
+  #course-container .col-sm-3 {
+    max-width: 90%;
+  }
+
+  #course-container .col-sm-3 {
+    max-width: 90%;
+  }
 }
 
-fieldset .form-group{
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-
+fieldset {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.5rem 2rem;
+  border-radius: 30px;
 }
 
-fieldset .form-group label{
-    display: block;
-    margin-bottom: 10px;
-    margin-left: 5px;
+fieldset .form-group {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
 }
 
-fieldset .form-group input{
-    display: inline-block;
-    font-size: 1rem;
-    padding: 0.5rem 1rem;
-    border: none;
-    outline: none;
-    box-shadow: 0 0 1px 1px cadetblue;
-    border-radius: 30px;
-    transition: box-shadow 0.2s linear;
+fieldset .form-group label {
+  display: block;
+  margin-bottom: 10px;
+  margin-left: 5px;
 }
 
-fieldset .form-group button{
-    outline: none;
-    border: none;
-    box-shadow: 0 0 2px 2px powderblue;
-    padding: 0.5rem 1.25rem;
-    display: inline-block;
-    background-color: teal;
-    color: #f1f1f1;
-    transition: all 0.2s linear;
-    max-width: 200px;
-    border-radius: 8px;
-
+fieldset .form-group input {
+  display: inline-block;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  outline: none;
+  box-shadow: 0 0 1px 1px cadetblue;
+  border-radius: 8px;
+  transition: box-shadow 0.2s linear;
 }
 
-fieldset .form-group input:focus{
-    box-shadow: 0 0 2px 2px darkcyan;
+fieldset .form-group button {
+  outline: none;
+  border: none;
+  box-shadow: 0 0 2px 2px powderblue;
+  padding: 0.5rem 1.25rem;
+  display: inline-block;
+  background-color: teal;
+  color: #f1f1f1;
+  transition: all 0.2s linear;
+  border-radius: 8px;
 }
 
-fieldset .form-group button:hov{
-    opacity: 0.9;
-    box-shadow: 0 0 2px 2px darkcyan;
+fieldset .form-group input:focus {
+  box-shadow: 0 0 2px 2px darkcyan;
 }
 
+fieldset .form-group button:hov {
+  opacity: 0.9;
+  box-shadow: 0 0 2px 2px darkcyan;
+}
 
-
-  body{
+body {
   background-repeat: repeat;
   background-position: center;
-    }
- /* medium devices*/
-    @media (min-width: 576px) {  
- form{
-     max-width: 80%;
-    
-    }}
-     /* Large devices (desktops, 992px and up) */
-@media (min-width: 992px) { 
- form{
-    
-     max-width: 80%;
- }
 }

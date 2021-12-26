@@ -1,15 +1,15 @@
 import React from "react";
 
-function Loading(props) {
+function Loading({ property }) {
   return (
     <div>
-      <button className="btn " type="button" disabled>
+      <button className="btn" type="button" disabled>
         <span
-          className="spinner-grow spinner-grow-sm"
+          className="spinner-grow spinner-grow-sm spinner-border border-blue"
           role="status"
           aria-hidden="true"
         ></span>
-        Getting {props.property}
+        {property && <p>Getting {property}</p>}
       </button>
     </div>
   );

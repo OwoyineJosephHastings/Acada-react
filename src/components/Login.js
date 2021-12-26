@@ -1,80 +1,76 @@
-import { useState, useContext } from "react";
+import { useState } from "react";
 import { Redirect, useLocation, withRouter } from "react-router";
 import { Link } from "react-router-dom";
 import { projectAuth } from "../firebase/config";
-import { AuthContext } from "./AuthProvider";
+import Loading from "../Helper/Loading";
+import { useAuth } from "./AuthProvider";
 
 const Login = ({ history }) => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
-  const { currentUser } = useContext(AuthContext);
+  const { currentUser, loading: loadingUser } = useAuth();
   const [state, setState] = useState({
     email: "",
     password: "",
   });
 
-  const { locationState } = useLocation();
+  const location = useLocation();
+  const redirect_to = new URLSearchParams(location.search).get("redirect_to") || "/";
+  if (loadingUser) return <Loading property="auth state" />;
+
   if (currentUser) {
-    return <Redirect to={locationState?.from || "/"} />;
+    return <Redirect to={{ pathname: redirect_to }} />;
   }
 
   const { email, password } = state;
 
-  const handleSubmit = (e) => {
+  const handleSubmit = e => {
     e.preventDefault();
+
     setLoading(true);
     setError(null);
 
     projectAuth
       .signInWithEmailAndPassword(email, password)
-      .then((userCredential) => {
+      .then(() => {
         setError(null);
         setLoading(false);
-        history.push(locationState?.from || "/");
+        history.push(redirect_to);
       })
-      .catch((error) => {
+      .catch(error => {
         var errorMessage = error.message;
         setError(errorMessage);
         setLoading(false);
       });
-
-    // ...
   };
 
-  const handleChange = (e) => {
+  const handleChange = e => {
     setState({ ...state, [e.target.name]: e.target.value });
   };
 
   return (
-    <>
-      <h1> ACADA LOGIN</h1>
-      <form >
+    <div className="login-wrapper">
+      <h2 className="text-primary">ACADA LOGIN</h2>
+      <form onSubmit={handleSubmit}>
         {error && (
-          <div
-            className="alert alert-danger alert-dismissible fade show"
-            role="alert"
-          >
+          <div className="alert alert-danger alert-dismissible fade show" role="alert">
             <strong>Oh Sorry! </strong> {error}
             <button
               type="button"
               className="close"
               data-dismiss="alert"
               aria-label="Close"
-              onClick={(e) => setError(null)}
+              onClick={e => setError(null)}
             >
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
         )}
+
         <fieldset>
-          <legend>DETAILS</legend>
+          <p className="text-muted mb-0">Enter your email and password</p>
           <div className="form-group">
-            {loading && (
-              <div
-                className="spinner-border text-primary mx-auto"
-                role="status"
-              ></div>
-            )}
+            {loading && <div className="spinner-border text-primary mx-auto" role="status"></div>}
             <label htmlFor="email">Email</label>
             <input
               type="email"
@@ -98,24 +94,23 @@ const Login = ({ history }) => {
               required
             />
           </div>
-          <div className="form-group" style={{ display: "flex" }}>
-            <button type="button" onClick={handleSubmit}>
+          <div className="form-group">
+            <button type="sumit" className="btn btn-primary">
               Login
             </button>
           </div>
           <div className="form-group">
-            <div className=" div mx-auto">
+            <p className="mb-0">
               Need an acount? <Link to="/signup">Sign up</Link>
-            </div>
-
-            <div className=" div mx-auto bg-white">
-              Trouble Signing in?{" "}
-              <Link to="/resetpassword">Reset password</Link>
-            </div>
+            </p>
+            <p>
+              Trouble Signing in? <Link to="/resetpassword">Reset password</Link>
+            </p>
           </div>
         </fieldset>
       </form>
-    </>
+    </div>
   );
 };
+
 export default withRouter(Login);

@@ -1,253 +1,143 @@
 import React from "react";
-import { useState, useEffect } from "react";
-
-import { projectDatabase } from "../firebase/config";
+import { useState } from "react";
 import Loading from "../Helper/Loading";
+import useCourses from "../hooks/useCourses";
 import CourseCard from "./CourseCard";
+
+const yearOptions = [
+  {
+    label: "Year 1",
+    disabled: true,
+  },
+  {
+    label: "Year 2",
+    disabled: false,
+  },
+  {
+    label: "Year 3",
+    disabled: false,
+  },
+  {
+    label: "Year 4",
+    disabled: false,
+  },
+];
+
+const semesterOptions = [
+  {
+    label: "Semester 1",
+    disabled: true,
+  },
+  {
+    label: "Semester 2",
+    disabled: false,
+  },
+];
+
 function Home() {
-  const [loading, setLoading] = useState(true);
-  const [resourceDocuments, setResourceDocs] = useState([]);
-  const [error, setError] = useState(null);
   const [Semester, setSemester] = useState("Semester 2");
   const [Year, setYear] = useState("Year 2");
-  useEffect(() => {
-    const storageRef = projectDatabase.ref("Courses");
+  const { courses, loading, error } = useCourses({ Semester, Year });
 
-    storageRef
-      .orderByChild("Year")
-      .equalTo(Year)
-      .once("value", (snapshot) => {
-        setResourceDocs([]);
-        setLoading(true);
-        let resourceDocs = [];
-
-        snapshot.forEach((childSnapshot) => {
-          var childKey = childSnapshot.key;
-          var childData = childSnapshot.val();
-          if (childData.Semester === Semester) {
-            childData = { ...childData, childKey };
-            resourceDocs.push(childData);
-          }
-        });
-        setResourceDocs(resourceDocs);
-      })
-      .then((data) => {
-        setLoading(false);
-        setError(null);
-      })
-      .catch((err) => {
-        setError("Error Occured   \n " + err);
-        setLoading(false);
-      });
-  }, [Semester, Year]);
-  const handleSemesterChange = (e) => {
-    if (Semester !== e.target.value) {
-      setLoading(true);
-      setSemester(e.target.value);
-      setError(null);
-      setResourceDocs([]);
-    }
+  const handleSemesterChange = e => {
+    console.log(e.target.value);
+    setSemester(e.target.value);
   };
-  const changeYear = (e) => {
-    if (Year !== e.target.value) {
-      setLoading(true);
-      setError(null);
-      setYear(e.target.value);
-      setError(null);
-    }
+
+  const changeYear = e => {
+    console.log(e.target.value);
+    setYear(e.target.value);
   };
 
   return (
-    <div>
-      <div className="container" style={{ display: "flex", flexWrap: "wrap" }}>
-        <fieldset className="form-group mx-auto">
-          <div className="row shadow-lg p-3 mx-auto  bg-white rounded">
-            <legend className="col-form-label col-sm-2 pt-0 mr-3 ">
-              Semester
-            </legend>
+    <div className="container-fluid">
+      <div className="course-selection">
+        <fieldset className="years">
+          <div className="rounded border border-secondary p-2 bg-white">
+            <h5 className="mx-3">Select Year</h5>
+            <div className="year-selection">
+              {yearOptions.map(yearOption => (
+                <div className="form-check" key={yearOption.label}>
+                  <input
+                    className="form-check-input"
+                    type="radio"
+                    id={yearOption.label}
+                    name="year"
+                    defaultChecked={yearOption.label === Year}
+                    value={yearOption.label}
+                    onChange={changeYear}
+                    disabled={yearOption.disabled}
+                  />
 
-            <div
-              className="col-sm-10 "
-              style={{
-                display: "flex",
-                maxHeight: "2rem",
-              }}
-            >
-              <div className="form-check">
-                <input
-                  className="form-check-input"
-                  type="radio"
-                  name="gridRadios"
-                  id="gridRadios1"
-                  value="Semester 1"
-                  disabled
-                  onClick={handleSemesterChange}
-                />
-                <label className="form-check-label" htmlFor="gridRadios1">
-                  Semester 1
-                </label>
-              </div>
-              <div className="form-check">
-                <input
-                  className="form-check-input"
-                  type="radio"
-                  name="gridRadios"
-                  id="gridRadios2"
-                  value="Semester 2"
-                  defaultChecked
-                  onClick={handleSemesterChange}
-                />
-                <label className="form-check-label" htmlFor="gridRadios2">
-                  Semester 2
-                </label>
-              </div>
+                  <label className="form-check-label nowrap" htmlFor={yearOption.label}>
+                    {yearOption.label}
+                  </label>
+                </div>
+              ))}
             </div>
           </div>
         </fieldset>
-        <fieldset className="form-group mx-auto ">
-          <div className="row shadow-lg  bg-white rounded">
-            <legend className="col-form-label col-sm-2 pt-0 mr-2 ">Year</legend>
 
-            <div
-              className="col-sm-10"
-              style={{
-                display: "flex",
-                maxHeight: "4rem",
-                justifyContent: "space-between",
-                margin: "1rem",
-              }}
-            >
-              <div className="form-check">
-                <input
-                  className="form-check-input"
-                  type="radio"
-                  name="grid2"
-                  id="gridRadios3"
-                  value="Year 1"
-                  onClick={changeYear}
-                />
-                <label className="form-check-label " htmlFor="gridRadios3">
-                  Year 1
-                </label>
-              </div>
-              <div className="form-check">
-                <input
-                  className="form-check-input"
-                  type="radio"
-                  name="grid2"
-                  id="gridRadios4"
-                  value="Year 2"
-                  onClick={changeYear}
-                  defaultChecked
-                />
-                <label className="form-check-label" htmlFor="gridRadios4">
-                  Year 2
-                </label>
-              </div>
-              <div className="form-check">
-                <input
-                  className="form-check-input"
-                  type="radio"
-                  name="grid2"
-                  id="gridRadios5"
-                  value="Year 3"
-                  onClick={changeYear}
-                />
-                <label className="form-check-label" htmlFor="gridRadios5">
-                  Year 3
-                </label>
-              </div>
-              <div className="form-check">
-                <input
-                  className="form-check-input"
-                  type="radio"
-                  name="grid2"
-                  id="gridRadios6"
-                  value="Year 4"
-                  onClick={changeYear}
-                />
-                <label className="form-check-label" htmlFor="gridRadios6">
-                  Year 4
-                </label>
-              </div>
+        <fieldset className="semesters">
+          <div className="rounded border border-secondary p-2 bg-white">
+            <h5 className="mx-3">Semester</h5>
+            <div className="d-flex" style={{ gap: 16, flexWrap: "wrap" }}>
+              {semesterOptions.map(sem => (
+                <div className="form-check" key={sem.label}>
+                  <input
+                    className="form-check-input"
+                    type="radio"
+                    id={sem.label}
+                    name="semester"
+                    defaultChecked={sem.label === Semester}
+                    value={sem.label}
+                    onChange={handleSemesterChange}
+                    disabled={sem.disabled}
+                  />
+                  <label className="form-check-label nowrap" htmlFor={sem.label}>
+                    {sem.label}
+                  </label>
+                </div>
+              ))}
             </div>
           </div>
         </fieldset>
       </div>
-      <a href="/notes">
-        <h5>More Courses</h5>
+
+      <a href="/notes" className="ml-4 my-2 d-inline-block">
+        More Courses
       </a>
-      <h2 className="ml-8">Courses</h2>
+      {courses && courses.length > 0 && <h4 className="ml-4 mt-2">Courses</h4>}
       {loading && <Loading property=" Acada Courses" />}
       <div>
-        {resourceDocuments.length === 0 && !loading && (
+        {courses.length === 0 && !loading && (
           <div className="alert alert-danger" role="alert">
-            OOOps! No results for your Selection yet. The development of updates
-            is Going on. We appologise for any inconviniences, click
-            <a href="/notes">
-              <h5>More Courses</h5>
-            </a>
-            for More courses
+            <p>
+              No results for your{" "}
+              <strong>
+                {Year} {Semester}
+              </strong>
+            </p>
+
+            <p>
+              More course are being uploaded soon. We appologise for any inconviniences, click
+              <a href="/notes" className="d-inline-block mx-1">
+                <span>here</span>
+              </a>
+              for more courses
+            </p>
           </div>
         )}
-        {error && <div>Some error occured;</div>}
-        {resourceDocuments && (
+
+        {error && <div>Some error occured</div>}
+        {courses && (
           <div className="d-flex flex-wrap ">
-            {resourceDocuments.map((course) => {
-              return <CourseCard course={course} key={course.key} />;
+            {courses.map(course => {
+              return <CourseCard course={course} key={course.childKey} />;
             })}
           </div>
         )}
       </div>
-      <a href="/notes">
-        <h5>More Courses</h5>
-      </a>
-      <footer
-        style={{
-          left: "0",
-          bottom: "0",
-          width: "100%",
-          color: "white",
-          backgroundColor: "lightgray",
-          textAlign: "center",
-        }}
-      >
-        <div
-          className="div"
-          style={{ display: "flex", justifyContent: "center", gap: "1.5rem" }}
-        >
-          <a href="http://www.instagram.com" target="blank">
-            <i className="bi bi-instagram"></i>
-          </a>
-          <a href="http://www.twitter.com" target="blank">
-            <i className="bi bi-twitter"></i>
-          </a>
-          <a href="http://www.facebook.com" target="blank">
-            <i className="bi bi-facebook"></i>
-          </a>
-        </div>
-        <ul
-          className="list-inline"
-          style={{ display: "flex", justifyContent: "center" }}
-        >
-          <li className="list-inline-item">
-            <a href="/">Home</a>
-          </li>
-          <li className="list-inline-item">
-            <a href="/notes">Services</a>
-          </li>
-          <li className="list-inline-item">
-            <a href="/contact">Help</a>
-          </li>
-          <li className="list-inline-item">
-            <a href="/">Terms</a>
-          </li>
-          <li className="list-inline-item">
-            <a href="/">Privacy Policy</a>
-          </li>
-        </ul>
-        <p className="copyright">ACADA © 2021</p>
-      </footer>
     </div>
   );
 }

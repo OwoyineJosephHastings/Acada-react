@@ -1,15 +1,19 @@
-import React, { useEffect, useState } from "react";
-import { projectAuth } from "../firebase/config";
+import React, { useContext } from "react";
 
-export const AuthContext = React.createContext();
-export const AuthProvider = ({ children }) => {
-  const [currentUser, setCurrentUser] = useState(null);
-  useEffect(() => {
-    projectAuth.onAuthStateChanged(setCurrentUser);
-  }, []);
-  return (
-    <AuthContext.Provider value={{ currentUser }}>
-      {children}
-    </AuthContext.Provider>
-  );
+export const AuthContext = React.createContext({
+  currentUser: null,
+  loading: true,
+});
+
+export const useAuth = () => {
+  const ctx = useContext(AuthContext);
+
+  if (!ctx) {
+    throw new Error("useAuth must be used within an AuthProvider");
+  }
+  return ctx;
+};
+
+export const AuthProvider = ({ children, auth }) => {
+  return <AuthContext.Provider value={auth}>{children}</AuthContext.Provider>;
 };

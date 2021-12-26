@@ -15,58 +15,49 @@ const SignUp = ({ history }) => {
 
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = e => {
     e.preventDefault();
     e.target.setAttribute("disabled", true);
-    setLoading(true);
+
     if (password === passwordRetype) {
+      setLoading(true);
       projectAuth
         .createUserWithEmailAndPassword(email, password)
-        .then((userCredential) => {
-          setError(null);
+        .then(userCredential => {
           setLoading(false);
+          setError(null);
           e.target.setAttribute("disabled", false);
           history.push("/");
         })
-        .catch((error) => {
-          e.target.setAttribute("disabled", false);
+        .catch(error => {
           setLoading(false);
+          e.target.setAttribute("disabled", false);
           var errorMessage = error.message;
           setError(errorMessage);
         });
     } else setError("Passwords do not match");
-
-    // ...
   };
 
-  const handleChange = (e) => {
+  const handleChange = e => {
     setState({ ...state, [e.target.name]: e.target.value });
   };
 
   return (
-    <form  onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="login-wrapper">
       <fieldset>
         <legend>
           <h3> CREATE NEW ACOUNT</h3>
         </legend>
-        {loading && (
-          <div
-            className="spinner-border text-primary mx-auto"
-            role="status"
-          ></div>
-        )}
+        {loading && <div className="spinner-border text-primary mx-auto" role="status"></div>}
         {error && (
-          <div
-            className="alert alert-danger alert-dismissible fade show"
-            role="alert"
-          >
+          <div className="alert alert-danger alert-dismissible fade show" role="alert">
             <strong>Oh Sorry! </strong> {error}
             <button
               type="button"
               className="close"
               data-dismiss="alert"
               aria-label="Close"
-              onClick={(e) => setError(null)}
+              onClick={e => setError(null)}
             >
               <span aria-hidden="true">&times;</span>
             </button>
@@ -108,14 +99,17 @@ const SignUp = ({ history }) => {
             required
           />
         </div>
-        <div className="form-group">
-          <button>Sign up</button>
-          <strong className="mx-auto">
-            <span>
-              Already have an account?
-              <Link to="/login"> Sign in </Link>
-            </span>
-          </strong>
+
+        <div className="form-group mb-0">
+          <button type="submit" disabled={loading}>
+            Sign up
+          </button>
+        </div>
+        <div className="form-group mt-0">
+          <span>
+            Already have an account?
+            <Link to="/login"> Sign in </Link>
+          </span>
         </div>
       </fieldset>
     </form>
