@@ -97,6 +97,10 @@ body {
   row-gap: 4px;
 }
 
+.course-selection fieldset {
+  padding: 5px !important;
+}
+
 .nowrap {
   white-space: nowrap;
 }
